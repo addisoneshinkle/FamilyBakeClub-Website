@@ -5,24 +5,14 @@ url: "https://addisoneshinkle.github.io"
 
 # Collections
 collections:
-    recipes:
-        output: true
-        permalink: /recipes/:name/
+  recipes:
+    output: true
+    permalink: /recipes/:name/
 
-# Include data files if needed
+# Include data folder
 include:
-    - _data
+  - _data
 
-# Markdown settings
+# Markdown
 markdown: kramdown
 theme: minima
-
-# Optional plugins if you want to auto-generate pages from JSON
-plugins:
-  - jekyll-datapage_gen
-
-jekyll_datapage_gen:
-  datafiles: ["_data/recipes/*.json"]
-  template: "recipe"
-  name: "recipe_name"
-  dir: "recipes"

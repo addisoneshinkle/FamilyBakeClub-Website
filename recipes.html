@@ -1,8 +1,17 @@
+---
+layout: default
+title: All Recipes
+---
+
+<h1>Family Bake Club Recipes</h1>
+
 <ul class="recipe-list">
   {% for filename, recipe in site.data.recipes %}
     <li class="recipe-item">
       <a href="{{ site.baseurl }}/recipes/{{ filename }}">
-        <img src="{{ recipe.image }}" alt="{{ recipe.recipe_name }}" style="width:150px; height:auto;">
+        {% if recipe.image %}
+          <img src="{{ recipe.image }}" alt="{{ recipe.recipe_name }}" style="width:150px; height:auto;">
+        {% endif %}
         <h2>{{ recipe.recipe_name }}</h2>
       </a>
       <p>{{ recipe.short_description }}</p>
