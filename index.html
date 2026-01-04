@@ -1,0 +1,1116 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Family Bake Club</title>
+        <meta
+            name="description"
+            content="Family Bake Club — our colorful baking journey with recipes, videos, and fun lessons learned." />
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;600;700&display=swap"
+            rel="stylesheet" />
+
+        <style>
+            :root {
+                --bg: #fff7fb;
+                --ink: #1f2430;
+                --muted: #5b6274;
+                --card: rgba(255, 255, 255, 0.82);
+                --stroke: rgba(31, 36, 48, 0.1);
+                --shadow: 0 18px 44px rgba(25, 35, 55, 0.14);
+                --shadow-soft: 0 10px 24px rgba(25, 35, 55, 0.1);
+                --r-xl: 26px;
+                --r-lg: 20px;
+                --r-md: 16px;
+                --r-sm: 14px;
+
+                /* Fun palette inspired by your 2nd image vibe */
+                --pink: #ff4fa3;
+                --coral: #ff6f7d;
+                --peach: #ffb86b;
+                --lemon: #ffe45c;
+                --mint: #2bd9a7;
+                --sky: #4fb6ff;
+                --grape: #7a5cff;
+
+                --max: 1120px;
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+            html,
+            body {
+                height: 100%;
+            }
+            body {
+                margin: 0;
+                font-family:
+                    Inter,
+                    system-ui,
+                    -apple-system,
+                    Segoe UI,
+                    Roboto,
+                    Arial,
+                    sans-serif;
+                color: var(--ink);
+                background: radial-gradient(900px 500px at 10% 10%, rgba(255, 79, 163, 0.18), transparent 55%),
+                    radial-gradient(820px 520px at 90% 18%, rgba(79, 182, 255, 0.16), transparent 55%),
+                    radial-gradient(900px 600px at 55% 100%, rgba(43, 217, 167, 0.14), transparent 60%), var(--bg);
+                overflow-x: hidden;
+            }
+
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+            .container {
+                max-width: var(--max);
+                margin: 0 auto;
+                padding: 22px;
+            }
+            .fredoka {
+                font-family: Fredoka, system-ui, sans-serif;
+            }
+
+            /* Sticky header */
+            header {
+                position: sticky;
+                top: 0;
+                z-index: 50;
+                backdrop-filter: blur(10px);
+                background: rgba(255, 247, 251, 0.72);
+                border-bottom: 1px solid rgba(31, 36, 48, 0.06);
+            }
+            .nav {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 14px;
+            }
+            .brand {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                font-weight: 800;
+            }
+            .brand .wordmark {
+                line-height: 1.05;
+                display: flex;
+                flex-direction: column;
+            }
+            .brand .wordmark small {
+                font-weight: 700;
+                color: var(--muted);
+                letter-spacing: 0.2px;
+                margin-top: 2px;
+                font-size: 12px;
+            }
+
+            nav ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                flex-wrap: wrap;
+            }
+            nav a {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 10px 12px;
+                border-radius: 999px;
+                font-weight: 800;
+                color: var(--muted);
+            }
+            nav a:hover {
+                color: var(--ink);
+                background: rgba(122, 92, 255, 0.1);
+                box-shadow: 0 8px 18px rgba(122, 92, 255, 0.12);
+            }
+
+            .btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                padding: 12px 14px;
+                border-radius: 999px;
+                border: 0;
+                font-weight: 900;
+                cursor: pointer;
+                color: white;
+                background: linear-gradient(135deg, var(--pink), var(--grape));
+                box-shadow: 0 14px 26px rgba(255, 79, 163, 0.18);
+            }
+            .btn:active {
+                transform: translateY(1px);
+            }
+            .btn.secondary {
+                color: var(--ink);
+                background: rgba(255, 255, 255, 0.92);
+                border: 1px solid var(--stroke);
+                box-shadow: var(--shadow-soft);
+            }
+
+            /* Decorative waves */
+            .waveTop {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                height: 320px;
+                z-index: -1;
+                opacity: 0.9;
+                pointer-events: none;
+            }
+            .waveBottom {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: -1px;
+                height: 260px;
+                z-index: -1;
+                opacity: 0.9;
+                pointer-events: none;
+                transform: rotate(180deg);
+            }
+
+            /* Hero */
+            .heroWrap {
+                position: relative;
+                padding: 26px 0 10px;
+            }
+            .hero {
+                display: grid;
+                grid-template-columns: 1.1fr 0.9fr;
+                gap: 16px;
+                align-items: center;
+                padding: 18px 0 8px;
+            }
+
+            .pill {
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                padding: 9px 12px;
+                border-radius: 999px;
+                background: rgba(255, 255, 255, 0.9);
+                border: 1px solid rgba(122, 92, 255, 0.14);
+                box-shadow: 0 10px 22px rgba(31, 36, 48, 0.06);
+                font-weight: 900;
+                color: var(--muted);
+            }
+            .dot {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+            }
+            .dot.pink {
+                background: var(--pink);
+            }
+            .dot.mint {
+                background: var(--mint);
+            }
+            .dot.sky {
+                background: var(--sky);
+            }
+
+            h1 {
+                margin: 12px 0 8px;
+                font-size: clamp(34px, 4vw, 56px);
+                line-height: 1.03;
+                letter-spacing: 0.2px;
+            }
+            .sub {
+                margin: 0;
+                color: var(--muted);
+                line-height: 1.65;
+                max-width: 56ch;
+                font-size: 16px;
+            }
+            .heroActions {
+                display: flex;
+                gap: 12px;
+                flex-wrap: wrap;
+                margin-top: 16px;
+            }
+
+            .heroCard {
+                background: var(--card);
+                border: 1px solid var(--stroke);
+                border-radius: var(--r-xl);
+                box-shadow: var(--shadow);
+                padding: 16px;
+                position: relative;
+                overflow: hidden;
+            }
+            .heroCard:before {
+                content: "";
+                position: absolute;
+                inset: -110px -110px auto auto;
+                width: 290px;
+                height: 290px;
+                border-radius: 50%;
+                background: radial-gradient(
+                    circle at 30% 30%,
+                    rgba(255, 79, 163, 0.55),
+                    rgba(122, 92, 255, 0.16),
+                    transparent 70%
+                );
+                transform: rotate(10deg);
+            }
+
+            .heroGrid {
+                margin-top: 12px;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+            .mini {
+                border-radius: 18px;
+                padding: 12px;
+                border: 1px solid rgba(31, 36, 48, 0.06);
+                background: linear-gradient(135deg, rgba(255, 184, 107, 0.25), rgba(255, 79, 163, 0.1));
+            }
+            .mini:nth-child(2) {
+                background: linear-gradient(135deg, rgba(79, 182, 255, 0.2), rgba(43, 217, 167, 0.1));
+            }
+            .mini:nth-child(3) {
+                background: linear-gradient(135deg, rgba(255, 228, 92, 0.32), rgba(255, 184, 107, 0.1));
+            }
+            .mini:nth-child(4) {
+                background: linear-gradient(135deg, rgba(122, 92, 255, 0.18), rgba(79, 182, 255, 0.1));
+            }
+            .mini b {
+                display: block;
+                margin-bottom: 6px;
+            }
+            .mini p {
+                margin: 0;
+                color: var(--muted);
+                font-size: 13px;
+                line-height: 1.4;
+            }
+
+            /* Sections */
+            section {
+                padding: 18px 0;
+            }
+            .sectionHead {
+                display: flex;
+                align-items: flex-end;
+                justify-content: space-between;
+                gap: 14px;
+                flex-wrap: wrap;
+                margin: 18px 0 12px;
+            }
+            h2 {
+                margin: 0;
+                font-size: clamp(22px, 2.6vw, 32px);
+                letter-spacing: 0.2px;
+            }
+            .kicker {
+                margin: 0;
+                color: var(--muted);
+                line-height: 1.55;
+            }
+
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                gap: 14px;
+            }
+
+            .card {
+                background: var(--card);
+                border: 1px solid var(--stroke);
+                border-radius: var(--r-xl);
+                box-shadow: var(--shadow-soft);
+                padding: 16px;
+            }
+
+            /* Feature cards */
+            .feature {
+                grid-column: span 4;
+                position: relative;
+                overflow: hidden;
+            }
+            .feature:before {
+                content: "";
+                position: absolute;
+                inset: -80px auto auto -80px;
+                width: 220px;
+                height: 220px;
+                border-radius: 50%;
+                opacity: 0.8;
+                filter: blur(0.2px);
+            }
+            .feature.one:before {
+                background: radial-gradient(circle at 30% 30%, rgba(255, 79, 163, 0.32), transparent 62%);
+            }
+            .feature.two:before {
+                background: radial-gradient(circle at 30% 30%, rgba(79, 182, 255, 0.28), transparent 62%);
+            }
+            .feature.three:before {
+                background: radial-gradient(circle at 30% 30%, rgba(43, 217, 167, 0.26), transparent 62%);
+            }
+            .feature h3 {
+                margin: 0 0 8px;
+            }
+            .feature p {
+                margin: 0;
+                color: var(--muted);
+                line-height: 1.55;
+            }
+
+            /* Recipe cards */
+            .recipe {
+                grid-column: span 4;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .thumb {
+                height: 150px;
+                border-radius: 18px;
+                border: 1px solid rgba(31, 36, 48, 0.08);
+                background: radial-gradient(120px 90px at 25% 30%, rgba(255, 228, 92, 0.75), transparent 70%),
+                    radial-gradient(140px 110px at 70% 35%, rgba(79, 182, 255, 0.55), transparent 72%),
+                    radial-gradient(160px 120px at 55% 75%, rgba(255, 79, 163, 0.4), transparent 70%),
+                    linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.6));
+                position: relative;
+                overflow: hidden;
+            }
+            .sticker {
+                position: absolute;
+                top: 12px;
+                left: 12px;
+                padding: 7px 10px;
+                border-radius: 999px;
+                background: rgba(255, 255, 255, 0.9);
+                border: 1px solid rgba(31, 36, 48, 0.1);
+                font-weight: 900;
+                font-size: 12px;
+                color: var(--muted);
+                box-shadow: 0 10px 18px rgba(31, 36, 48, 0.08);
+            }
+            .recipe h3 {
+                margin: 0;
+            }
+            .meta {
+                display: flex;
+                gap: 8px;
+                flex-wrap: wrap;
+            }
+            .chip {
+                padding: 6px 10px;
+                border-radius: 999px;
+                border: 1px solid rgba(31, 36, 48, 0.1);
+                background: rgba(255, 255, 255, 0.85);
+                font-weight: 900;
+                font-size: 12px;
+                color: var(--muted);
+            }
+            .recipe p {
+                margin: 0;
+                color: var(--muted);
+                line-height: 1.55;
+            }
+
+            /* Videos */
+            .video {
+                grid-column: span 6;
+            }
+            .videoBox {
+                border-radius: 20px;
+                border: 1px solid rgba(31, 36, 48, 0.1);
+                overflow: hidden;
+                background: rgba(255, 255, 255, 0.85);
+            }
+            .videoBox iframe {
+                display: block;
+                width: 100%;
+                height: 260px;
+                border: 0;
+            }
+            .video .desc {
+                margin-top: 10px;
+                color: var(--muted);
+                line-height: 1.55;
+            }
+
+            /* Journey posts */
+            .post {
+                grid-column: span 4;
+            }
+            .post h3 {
+                margin: 0 0 8px;
+            }
+            .post p {
+                margin: 0;
+                color: var(--muted);
+                line-height: 1.55;
+            }
+
+            /* Contact / footer */
+            .contactLeft {
+                grid-column: span 7;
+            }
+            .contactRight {
+                grid-column: span 5;
+            }
+            form {
+                display: grid;
+                gap: 10px;
+                margin-top: 10px;
+            }
+            input,
+            textarea {
+                width: 100%;
+                padding: 12px 12px;
+                border-radius: 14px;
+                border: 1px solid rgba(31, 36, 48, 0.14);
+                outline: none;
+                font: inherit;
+                background: rgba(255, 255, 255, 0.9);
+            }
+            textarea {
+                min-height: 120px;
+                resize: vertical;
+            }
+            input:focus,
+            textarea:focus {
+                border-color: rgba(122, 92, 255, 0.55);
+                box-shadow: 0 0 0 4px rgba(122, 92, 255, 0.12);
+            }
+            .small {
+                font-size: 13px;
+                color: var(--muted);
+                line-height: 1.45;
+            }
+            .infoPills {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-top: 12px;
+            }
+            footer {
+                padding: 26px 0 44px;
+                color: var(--muted);
+            }
+
+            /* Modal */
+            .modalOverlay {
+                position: fixed;
+                inset: 0;
+                background: rgba(17, 20, 30, 0.48);
+                display: none;
+                align-items: center;
+                justify-content: center;
+                padding: 22px;
+                z-index: 999;
+            }
+            .modal {
+                width: min(920px, 100%);
+                background: rgba(255, 255, 255, 0.95);
+                border: 1px solid rgba(255, 255, 255, 0.35);
+                border-radius: var(--r-xl);
+                box-shadow: 0 26px 80px rgba(0, 0, 0, 0.28);
+                overflow: hidden;
+                position: relative;
+            }
+            .modalHeader {
+                padding: 16px;
+                border-bottom: 1px solid rgba(31, 36, 48, 0.08);
+                background: radial-gradient(260px 140px at 20% 20%, rgba(255, 79, 163, 0.18), transparent 62%),
+                    radial-gradient(260px 160px at 85% 30%, rgba(79, 182, 255, 0.16), transparent 62%),
+                    rgba(255, 255, 255, 0.92);
+                display: flex;
+                justify-content: space-between;
+                gap: 10px;
+                align-items: flex-start;
+            }
+            .modalTitle {
+                margin: 0;
+                font-size: 22px;
+            }
+            .closeBtn {
+                border: 0;
+                background: rgba(255, 255, 255, 0.9);
+                border: 1px solid rgba(31, 36, 48, 0.12);
+                border-radius: 999px;
+                padding: 10px 12px;
+                font-weight: 900;
+                cursor: pointer;
+                box-shadow: 0 10px 18px rgba(31, 36, 48, 0.08);
+            }
+            .modalBody {
+                padding: 16px;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 14px;
+            }
+            .modalPanel {
+                border: 1px solid rgba(31, 36, 48, 0.1);
+                border-radius: 18px;
+                padding: 14px;
+                background: rgba(255, 255, 255, 0.85);
+            }
+            .modalPanel h4 {
+                margin: 0 0 10px;
+            }
+            .modalPanel ul {
+                margin: 0;
+                padding-left: 18px;
+                color: var(--muted);
+                line-height: 1.6;
+            }
+            .modalPanel ol {
+                margin: 0;
+                padding-left: 18px;
+                color: var(--muted);
+                line-height: 1.6;
+            }
+
+            /* Responsive */
+            @media (max-width: 980px) {
+                .hero {
+                    grid-template-columns: 1fr;
+                    gap: 14px;
+                }
+                .feature {
+                    grid-column: span 12;
+                }
+                .recipe {
+                    grid-column: span 6;
+                }
+                .video {
+                    grid-column: span 12;
+                }
+                .post {
+                    grid-column: span 6;
+                }
+                .contactLeft,
+                .contactRight {
+                    grid-column: span 12;
+                }
+                .modalBody {
+                    grid-template-columns: 1fr;
+                }
+            }
+            @media (max-width: 560px) {
+                nav ul {
+                    display: none;
+                }
+                .heroGrid {
+                    grid-template-columns: 1fr;
+                }
+                .recipe {
+                    grid-column: span 12;
+                }
+                .post {
+                    grid-column: span 12;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <div class="container nav">
+                <a class="brand" href="#home" aria-label="Family Bake Club">
+                    <!-- LOGO (SVG) -->
+                    <svg width="46" height="46" viewBox="0 0 64 64" aria-hidden="true">
+                        <defs>
+                            <linearGradient id="fbcG" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0" stop-color="#ff4fa3" />
+                                <stop offset="0.5" stop-color="#4fb6ff" />
+                                <stop offset="1" stop-color="#2bd9a7" />
+                            </linearGradient>
+                        </defs>
+                        <rect x="6" y="6" width="52" height="52" rx="16" fill="url(#fbcG)" opacity=".92" />
+                        <!-- little cupcake -->
+                        <path d="M22 30c0-5 4-9 10-9s10 4 10 9" fill="#fff" opacity=".92" />
+                        <path d="M21 30h22l-2 18H23l-2-18z" fill="#fff" opacity=".92" />
+                        <circle cx="26" cy="25" r="2" fill="#ffe45c" />
+                        <circle cx="32" cy="22" r="2" fill="#ffb86b" />
+                        <circle cx="38" cy="25" r="2" fill="#7a5cff" />
+                        <!-- tiny hearts -->
+                        <path
+                            d="M16 20c1.6-2.2 4.8-1.6 5.2 1 .4-2.6 3.6-3.2 5.2-1 1.8 2.4-1.1 5.2-5.2 7-4.1-1.8-7-4.6-5.2-7z"
+                            fill="#fff"
+                            opacity=".85" />
+                    </svg>
+
+                    <div class="wordmark fredoka">
+                        <span style="font-size: 18px">Family Bake Club</span>
+                        <small>Recipes • Videos • Our baking journey</small>
+                    </div>
+                </a>
+
+                <nav aria-label="Primary">
+                    <ul>
+                        <li><a href="#journey">🍰 Journey</a></li>
+                        <li><a href="#recipes">🧁 Recipes</a></li>
+                        <li><a href="#videos">🎥 Videos</a></li>
+                        <li><a href="#learn">⭐ Learning</a></li>
+                        <li><a href="#contact">💌 Contact</a></li>
+                    </ul>
+                </nav>
+
+                <a class="btn" href="#recipes">Bake with us ✨</a>
+            </div>
+        </header>
+
+        <main class="container" id="home">
+            <div class="heroWrap">
+                <!-- Decorative Wave -->
+                <svg class="waveTop" viewBox="0 0 1440 320" preserveAspectRatio="none" aria-hidden="true">
+                    <path
+                        fill="rgba(79,182,255,.18)"
+                        d="M0,192L48,176C96,160,192,128,288,117.3C384,107,480,117,576,144C672,171,768,213,864,218.7C960,224,1056,192,1152,170.7C1248,149,1344,139,1392,133.3L1440,128L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+                    <path
+                        fill="rgba(255,79,163,.16)"
+                        d="M0,224L60,208C120,192,240,160,360,154.7C480,149,600,171,720,170.7C840,171,960,149,1080,133.3C1200,117,1320,107,1380,101.3L1440,96L1440,0L0,0Z"></path>
+                    <path
+                        fill="rgba(43,217,167,.14)"
+                        d="M0,256L72,245.3C144,235,288,213,432,213.3C576,213,720,235,864,224C1008,213,1152,171,1296,154.7C1440,139,1584,149,1656,154.7L1728,160L1728,0L0,0Z"></path>
+                </svg>
+
+                <section class="hero">
+                    <div>
+                        <div class="pill">
+                            <span class="dot pink"></span><span class="dot mint"></span><span class="dot sky"></span>
+                            Kid-friendly baking, big family smiles
+                        </div>
+
+                        <h1 class="fredoka">Baking fun for the whole family!</h1>
+                        <p class="sub">
+                            Welcome to <b>Family Bake Club</b> — our colorful baking journey where we share
+                            <b>recipes</b>, <b>videos</b>, and everything we learn along the way (including the “oops”
+                            moments!).
+                        </p>
+
+                        <div class="heroActions">
+                            <a class="btn" href="#recipes">Explore recipes</a>
+                            <a class="btn secondary" href="#videos">Watch videos</a>
+                            <a class="btn secondary" href="#journey">Read our journey</a>
+                        </div>
+                    </div>
+
+                    <aside class="heroCard" aria-label="This week">
+                        <h3 class="fredoka" style="margin: 0 0 6px">This week’s baking adventures</h3>
+                        <p class="kicker" style="margin: 0 0 10px">Swap these with your newest posts + recipes.</p>
+
+                        <div class="heroGrid">
+                            <div class="mini">
+                                <b>Rainbow Cupcakes</b>
+                                <p>Swirled frosting + sprinkles (kid-approved).</p>
+                            </div>
+                            <div class="mini">
+                                <b>Soft Chocolate Cookies</b>
+                                <p>Big chunks, gooey centers, happy faces.</p>
+                            </div>
+                            <div class="mini">
+                                <b>Beginner Sourdough</b>
+                                <p>What we learned about shaping & rise.</p>
+                            </div>
+                            <div class="mini">
+                                <b>Decorating Tips</b>
+                                <p>Simple piping tricks anyone can do.</p>
+                            </div>
+                        </div>
+                    </aside>
+                </section>
+            </div>
+
+            <!-- What you'll find -->
+            <section aria-label="What you'll find">
+                <div class="sectionHead">
+                    <div>
+                        <h2 class="fredoka">What you’ll find here</h2>
+                        <p class="kicker">Built for kids + families who want to bake, learn, and have fun together.</p>
+                    </div>
+                    <span class="pill">New posts every week ⭐</span>
+                </div>
+
+                <div class="grid">
+                    <article class="card feature one">
+                        <h3 class="fredoka">🍪 Family recipes</h3>
+                        <p>Easy-to-follow steps, kid jobs, and little tips we wish we knew sooner.</p>
+                    </article>
+                    <article class="card feature two">
+                        <h3 class="fredoka">🎥 Videos</h3>
+                        <p>Short baking clips, decorating demos, and behind-the-scenes family baking time.</p>
+                    </article>
+                    <article class="card feature three">
+                        <h3 class="fredoka">⭐ What we’re learning</h3>
+                        <p>New techniques, ingredient experiments, and “we tried it so you don’t have to.”</p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Journey -->
+            <section id="journey" aria-label="Baking Journey">
+                <div class="sectionHead">
+                    <div>
+                        <h2 class="fredoka">Our baking journey</h2>
+                        <p class="kicker">Little stories, big lessons, and our favorite moments.</p>
+                    </div>
+                    <a class="btn secondary" href="#contact">Subscribe for updates</a>
+                </div>
+
+                <div class="grid" id="journeyGrid">
+                    <!-- Posts populated by JS (editable data below) -->
+                </div>
+            </section>
+
+            <!-- Recipes -->
+            <section id="recipes" aria-label="Recipes">
+                <div class="sectionHead">
+                    <div>
+                        <h2 class="fredoka">Recipes</h2>
+                        <p class="kicker">Click a recipe to open the full ingredients + steps.</p>
+                    </div>
+                    <span class="pill">Tip: Edit recipes in the JS at the bottom ✍️</span>
+                </div>
+
+                <div class="grid" id="recipeGrid">
+                    <!-- Recipes populated by JS -->
+                </div>
+            </section>
+
+            <!-- Videos -->
+            <section id="videos" aria-label="Videos">
+                <div class="sectionHead">
+                    <div>
+                        <h2 class="fredoka">Videos</h2>
+                        <p class="kicker">
+                            Replace these embeds with your YouTube links (instructions inside the code).
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid">
+                    <article class="card video">
+                        <div class="videoBox">
+                            <!-- Replace the src with your YouTube embed link -->
+                            <iframe
+                                title="Family Bake Club video 1"
+                                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen></iframe>
+                        </div>
+                        <p class="desc"><b>Decorating cupcakes:</b> easy swirls + sprinkles (perfect for kids).</p>
+                    </article>
+
+                    <article class="card video">
+                        <div class="videoBox">
+                            <iframe
+                                title="Family Bake Club video 2"
+                                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen></iframe>
+                        </div>
+                        <p class="desc"><b>Cookie day:</b> how we get gooey centers + crispy edges.</p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Learning -->
+            <section id="learn" aria-label="What we're learning">
+                <div class="sectionHead">
+                    <div>
+                        <h2 class="fredoka">What we’re learning</h2>
+                        <p class="kicker">Tiny lessons that make baking easier (and more fun).</p>
+                    </div>
+                </div>
+
+                <div class="grid">
+                    <article class="card feature one" style="grid-column: span 6">
+                        <h3 class="fredoka">🌡️ Oven truth: every oven is different</h3>
+                        <p>We started using an oven thermometer and it instantly improved cookies + cakes.</p>
+                    </article>
+                    <article class="card feature two" style="grid-column: span 6">
+                        <h3 class="fredoka">🥣 Kid jobs that actually help</h3>
+                        <p>Pouring, whisking, decorating, and “sprinkle captain” are our top favorites.</p>
+                    </article>
+                    <article class="card feature three" style="grid-column: span 12">
+                        <h3 class="fredoka">🧠 Our rule: fix the process, not the person</h3>
+                        <p>
+                            If something goes wrong, we ask: “What can we change next time?” (More chill, more
+                            learning.)
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Contact -->
+            <section id="contact" aria-label="Contact">
+                <div class="sectionHead">
+                    <div>
+                        <h2 class="fredoka">Get in touch</h2>
+                        <p class="kicker">Want to share a recipe idea or ask us to try something? Send a note!</p>
+                    </div>
+                </div>
+
+                <div class="grid">
+                    <div class="card contactLeft">
+                        <h3 class="fredoka" style="margin-top: 0">Message the Family Bake Club</h3>
+
+                        <!-- Front-end only template. Hook to Formspree/Netlify/your backend later. -->
+                        <form
+                            onsubmit="event.preventDefault(); alert('Thanks! This form is a template — connect it when you publish.');">
+                            <input required name="name" placeholder="Your name" />
+                            <input required type="email" name="email" placeholder="Email address" />
+                            <textarea
+                                name="message"
+                                placeholder="Your message (recipe ideas, questions, collabs, etc.)"></textarea>
+                            <button class="btn" type="submit">Send message 💌</button>
+                            <p class="small">Publishing tip: Netlify can auto-handle forms (or use Formspree).</p>
+                        </form>
+                    </div>
+
+                    <aside class="card contactRight">
+                        <h3 class="fredoka" style="margin-top: 0">Newsletter</h3>
+                        <p class="kicker">Get new recipes + videos in your inbox.</p>
+
+                        <div class="infoPills">
+                            <span class="pill"><span class="dot pink"></span> Weekly updates</span>
+                            <span class="pill"><span class="dot mint"></span> Kid-friendly recipes</span>
+                            <span class="pill"><span class="dot sky"></span> Beginner tips</span>
+                        </div>
+
+                        <div style="margin-top: 14px">
+                            <button
+                                class="btn secondary"
+                                onclick="alert('Template button — connect to Mailchimp/ConvertKit later!')">
+                                Join the club ✨
+                            </button>
+                            <p class="small" style="margin-top: 10px">
+                                Connect this button to Mailchimp/ConvertKit, or a simple Google Form.
+                            </p>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <footer>
+                <div
+                    style="
+                        display: flex;
+                        justify-content: space-between;
+                        gap: 14px;
+                        flex-wrap: wrap;
+                        align-items: center;
+                    ">
+                    <span>© <span id="year"></span> Family Bake Club</span>
+                    <span class="small">Made with sprinkles, curiosity, and family time 💖</span>
+                </div>
+            </footer>
+        </main>
+
+        <!-- Recipe modal -->
+        <div class="modalOverlay" id="modalOverlay" role="dialog" aria-modal="true" aria-label="Recipe details">
+            <div class="modal">
+                <div class="modalHeader">
+                    <div>
+                        <h3 class="modalTitle fredoka" id="modalTitle">Recipe</h3>
+                        <p class="kicker" id="modalSubtitle" style="margin: 6px 0 0">Quick details</p>
+                    </div>
+                    <button class="closeBtn" id="closeBtn" aria-label="Close">Close ✖</button>
+                </div>
+                <div class="modalBody">
+                    <div class="modalPanel">
+                        <h4 class="fredoka">Ingredients</h4>
+                        <ul id="modalIngredients"></ul>
+                    </div>
+                    <div class="modalPanel">
+                        <h4 class="fredoka">Steps</h4>
+                        <ol id="modalSteps"></ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // ====== EDIT YOUR CONTENT HERE ======
+            const journeyPosts = [
+                {
+                    title: "Our first rainbow cupcake day",
+                    date: "Week 1",
+                    text: "We learned: let cupcakes cool ALL the way before frosting… and sprinkles make everything better."
+                },
+                {
+                    title: "Cookie experiment: chill vs. no-chill dough",
+                    date: "Week 2",
+                    text: "Chilled dough = thicker cookies. No-chill = more spread. Both delicious. Science wins."
+                },
+                {
+                    title: "Beginner sourdough: our ‘oops’ and our fix",
+                    date: "Week 3",
+                    text: "We over-proofed once — now we watch the dough, not the clock. Huge improvement!"
+                }
+            ];
+
+            const recipes = [
+                {
+                    sticker: "Kid Favorite",
+                    title: "Rainbow Cupcakes",
+                    desc: "Fluffy vanilla cupcakes + swirl frosting + sprinkles.",
+                    time: "45 min",
+                    level: "Easy",
+                    bestFor: "Birthdays",
+                    ingredients: [
+                        "1 1/2 cups all-purpose flour",
+                        "1 1/2 tsp baking powder",
+                        "1/4 tsp salt",
+                        "1/2 cup unsalted butter (soft)",
+                        "3/4 cup sugar",
+                        "2 eggs",
+                        "2 tsp vanilla",
+                        "1/2 cup milk",
+                        "Food coloring + sprinkles (optional)"
+                    ],
+                    steps: [
+                        "Heat oven to 350°F (175°C). Line a muffin tin.",
+                        "Whisk flour, baking powder, salt.",
+                        "Cream butter + sugar until fluffy. Add eggs + vanilla.",
+                        "Mix dry + milk into batter (alternate).",
+                        "Fill liners 2/3 full. Bake 16–19 min.",
+                        "Cool completely. Frost + decorate!"
+                    ]
+                },
+                {
+                    sticker: "Super Soft",
+                    title: "Chocolate Chunk Cookies",
+                    desc: "Gooey centers, crispy edges, big chocolate chunks.",
+                    time: "30 min",
+                    level: "Easy",
+                    bestFor: "After school",
+                    ingredients: [
+                        "1/2 cup butter (soft)",
+                        "1/2 cup brown sugar",
+                        "1/4 cup white sugar",
+                        "1 egg",
+                        "1 tsp vanilla",
+                        "1 1/4 cups flour",
+                        "1/2 tsp baking soda",
+                        "1/4 tsp salt",
+                        "1 cup chocolate chunks"
+                    ],
+                    steps: [
+                        "Heat oven to 350°F. Line a sheet pan.",
+                        "Cream butter + sugars. Add egg + vanilla.",
+                        "Stir in flour, baking soda, salt. Fold in chocolate.",
+                        "Scoop dough balls and bake 9–11 min.",
+                        "Cool 10 min for extra gooey centers."
+                    ]
+                },
+                {
+                    sticker: "Party Fun",
+                    title: "Cake Pops (Easy Version)",
+                    desc: "Simple cake pops using leftover cake + frosting.",
+                    time: "60 min",
+                    level: "Medium",
+                    bestFor: "Parties",
+                    ingredients: [
+                        "2 cups crumbled cake (any flavor)",
+                        "3–5 tbsp frosting",
+                        "Candy melts/chocolate for coating",
+                        "Lollipop sticks",
+                        "Sprinkles (optional)"
+                    ],
+                    steps: [
+                        "Mix cake crumbs + frosting until it holds together.",
+                        "Roll into balls. Chill 20 minutes.",
+                        "Dip stick in melted candy, insert into cake ball.",
+                        "Dip + coat. Add sprinkles. Let set."
+                    ]
+                }
+            ];
+
+            // ====== Render Journey Posts ======
+            const journeyGrid = document.getElementById("journeyGrid");
+            journeyPosts.forEach((p) => {
+                const el = document.createElement("article");
+                el.className = "card post";
+                el.innerHTML = `
+        <div class="meta" style="margin-bottom:10px;">
+          <span class="chip">${p.date}</span>
+          <span class="chip">Family Bake Club</span>
+        </div>
+        <h3 class="fredoka">${p.title}</h3>
+        <p>${p.text}</p>
+      `;
+                journeyGrid.appendChild(el);
+            });
+
+            // ====== Render Recipes ======
+            const recipeGrid = document.getElementById("recipeGrid");
+            recipes.forEach((r, idx) => {
+                const el = document.createElement("article");
+                el.className = "card recipe";
+                el.innerHTML = `
+        <div class="thumb">
+          <span class="sticker">${r.sticker}</span>
+          <span class="sticker" style="left:auto; right:12px; background:rgba(255,255,255,.92)">${r.bestFor}</span>
+        </div>
+        <h3 class="fredoka">${r.title}</h3>
+        <div class="meta">
+          <span class="chip">⏱ ${r.time}</span>
+          <span class="chip">⭐ ${r.level}</span>
+        </div>
+        <p>${r.desc}</p>
+        <button class="btn secondary" style="margin-top:6px;" data-recipe="${idx}">Open recipe →</button>
+      `;
+                recipeGrid.appendChild(el);
+            });
+
+            // ====== Recipe Modal ======
+            const overlay = document.getElementById("modalOverlay");
+            const closeBtn = document.getElementById("closeBtn");
+            const modalTitle = document.getElementById("modalTitle");
+            const modalSubtitle = document.getElementById("modalSubtitle");
+            const modalIngredients = document.getElementById("modalIngredients");
+            const modalSteps = document.getElementById("modalSteps");
+
+            function openRecipe(i) {
+                const r = recipes[i];
+                modalTitle.textContent = r.title;
+                modalSubtitle.textContent = `${r.sticker} • ${r.time} • ${r.level} • Best for: ${r.bestFor}`;
+                modalIngredients.innerHTML = r.ingredients.map((x) => `<li>${x}</li>`).join("");
+                modalSteps.innerHTML = r.steps.map((x) => `<li>${x}</li>`).join("");
+                overlay.style.display = "flex";
+                document.body.style.overflow = "hidden";
+            }
+            function closeRecipe() {
+                overlay.style.display = "none";
+                document.body.style.overflow = "";
+            }
+
+            document.addEventListener("click", (e) => {
+                const btn = e.target.closest("[data-recipe]");
+                if (btn) openRecipe(Number(btn.dataset.recipe));
+            });
+            closeBtn.addEventListener("click", closeRecipe);
+            overlay.addEventListener("click", (e) => {
+                if (e.target === overlay) closeRecipe();
+            });
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") closeRecipe();
+            });
+
+            // Footer year
+            document.getElementById("year").textContent = new Date().getFullYear();
+        </script>
+    </body>
+</html>
