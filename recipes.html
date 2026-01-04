@@ -535,8 +535,9 @@
             document.addEventListener("click", (e) => {
                 const card = e.target.closest(".recipeCard");
                 if (card) {
-                    e.preventDefault();
-                    alert(`Would navigate to recipe #${card.dataset.id}. Connect this to your recipe pages!`);
+
+                    // Navigate to a new URL
+                    window.location.href = "https://addisoneshinkle.github.io/FamilyBakeClub-Website/recipe-template.html";
                 }
             });
 
