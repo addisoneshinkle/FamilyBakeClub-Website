@@ -1,7 +1,7 @@
 <ul class="recipe-list">
-  {% for filename in site.data.recipes %}
+  {% for filename, recipe in site.data.recipes %}
     <li class="recipe-item">
-      <a href="{{ site.baseurl }}{% filename %}">
+      <a href="{{ site.baseurl }}/recipes/{{ filename }}">
         <img src="{{ recipe.image }}" alt="{{ recipe.recipe_name }}" style="width:150px; height:auto;">
         <h2>{{ recipe.recipe_name }}</h2>
       </a>
