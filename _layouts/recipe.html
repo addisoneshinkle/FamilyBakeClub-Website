@@ -1,0 +1,51 @@
+---
+layout: default
+---
+
+<article class="recipe-page">
+  <header>
+    <h1>{{ page.recipe_name }}</h1>
+    <p>{{ page.short_description }}</p>
+    <img src="{{ page.image }}" alt="{{ page.recipe_name }}" style="max-width:100%; height:auto;">
+  </header>
+
+  <section class="recipe-meta">
+    <p><strong>Prep:</strong> {{ page.prep_time }} | <strong>Bake:</strong> {{ page.bake_time }} | <strong>Cool:</strong> {{ page.cool_time }} | <strong>Total:</strong> {{ page.total_time }}</p>
+    <p><strong>Quantity:</strong> {{ page.quantity }}</p>
+    <p><strong>Temperature:</strong> {{ page.temperature }}</p>
+    <p><strong>Difficulty:</strong> {{ page.difficulty }}</p>
+    <p><strong>Best for:</strong> {{ page.best_for }}</p>
+    <p><strong>Tags:</strong> {% for tag in page.tags %}<span>{{ tag }}</span>{% unless forloop.last %}, {% endunless %}{% endfor %}</p>
+  </section>
+
+  <section class="ingredients">
+    <h2>Ingredients</h2>
+    <ul>
+      {% for ingredient in page.ingredients %}
+        <li>{{ ingredient }}</li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="instructions">
+    <h2>Instructions</h2>
+    {% for step in page.instructions %}
+      <div class="instruction-step">
+        <h3>{{ step.title }}</h3>
+        <p>{{ step.description }}</p>
+      </div>
+    {% endfor %}
+  </section>
+
+  {% if page.tips_and_notes %}
+  <section class="tips-notes">
+    <h2>Tips & Notes</h2>
+    {% for tip in page.tips_and_notes %}
+      <div class="tip">
+        <h3>{{ tip.title }}</h3>
+        <p>{{ tip.description }}</p>
+      </div>
+    {% endfor %}
+  </section>
+  {% endif %}
+</article>
