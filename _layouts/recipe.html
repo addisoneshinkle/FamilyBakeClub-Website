@@ -1,51 +1,44 @@
 ---
 layout: default
 ---
-
-<article class="recipe-page">
-  <header>
+<div class="recipe-page">
     <h1>{{ page.recipe_name }}</h1>
-    <p>{{ page.short_description }}</p>
-    <img src="{{ page.image }}" alt="{{ page.recipe_name }}" style="max-width:100%; height:auto;">
-  </header>
 
-  <section class="recipe-meta">
-    <p><strong>Prep:</strong> {{ page.prep_time }} | <strong>Bake:</strong> {{ page.bake_time }} | <strong>Cool:</strong> {{ page.cool_time }} | <strong>Total:</strong> {{ page.total_time }}</p>
-    <p><strong>Quantity:</strong> {{ page.quantity }}</p>
-    <p><strong>Temperature:</strong> {{ page.temperature }}</p>
-    <p><strong>Difficulty:</strong> {{ page.difficulty }}</p>
-    <p><strong>Best for:</strong> {{ page.best_for }}</p>
-    <p><strong>Tags:</strong> {% for tag in page.tags %}<span>{{ tag }}</span>{% unless forloop.last %}, {% endunless %}{% endfor %}</p>
-  </section>
+    {% if page.image %}
+    <img src="{{ page.image }}" alt="{{ page.recipe_name }}" />
+    {% endif %}
 
-  <section class="ingredients">
+    <p class="description">{{ page.full_description }}</p>
+
+    <div class="recipe-meta">
+        <p><strong>Prep Time:</strong> {{ page.prep_time }}</p>
+        <p><strong>Bake Time:</strong> {{ page.bake_time }}</p>
+        <p><strong>Total Time:</strong> {{ page.total_time }}</p>
+        <p><strong>Difficulty:</strong> {{ page.difficulty }}</p>
+        <p><strong>Makes:</strong> {{ page.quantity }}</p>
+    </div>
+
     <h2>Ingredients</h2>
     <ul>
-      {% for ingredient in page.ingredients %}
+        {% for ingredient in page.ingredients %}
         <li>{{ ingredient }}</li>
-      {% endfor %}
+        {% endfor %}
     </ul>
-  </section>
 
-  <section class="instructions">
     <h2>Instructions</h2>
-    {% for step in page.instructions %}
-      <div class="instruction-step">
-        <h3>{{ step.title }}</h3>
-        <p>{{ step.description }}</p>
-      </div>
-    {% endfor %}
-  </section>
+    <ol>
+        {% for instruction in page.instructions %}
+        <li>
+            <strong>{{ instruction.title }}</strong>
+            <p>{{ instruction.description }}</p>
+        </li>
+        {% endfor %}
+    </ol>
 
-  {% if page.tips_and_notes %}
-  <section class="tips-notes">
     <h2>Tips & Notes</h2>
     {% for tip in page.tips_and_notes %}
-      <div class="tip">
-        <h3>{{ tip.title }}</h3>
-        <p>{{ tip.description }}</p>
-      </div>
+    <div class="tip">
+        <strong>{{ tip.title }}:</strong> {{ tip.description }}
+    </div>
     {% endfor %}
-  </section>
-  {% endif %}
-</article>
+</div>
