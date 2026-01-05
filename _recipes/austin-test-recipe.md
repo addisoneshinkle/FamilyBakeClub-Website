@@ -4,7 +4,7 @@ short_description: The most awesomeist recipe in the world
 full_description: This awesome Cake Recipe is the bomb .com
 tags:
     - Hard
-    - Cake
+    - Cakes
     - Party
     - Birthdays
 image: /assets/images/recipes/austin-test-recipe.jpg
