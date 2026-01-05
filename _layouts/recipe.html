@@ -46,7 +46,14 @@
             }
             body {
                 margin: 0;
-                font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+                font-family:
+                    Inter,
+                    system-ui,
+                    -apple-system,
+                    Segoe UI,
+                    Roboto,
+                    Arial,
+                    sans-serif;
                 color: var(--ink);
                 background: radial-gradient(900px 500px at 10% 10%, rgba(255, 79, 163, 0.18), transparent 55%),
                     radial-gradient(820px 520px at 90% 18%, rgba(79, 182, 255, 0.16), transparent 55%),
@@ -364,7 +371,7 @@
     <body>
         <header>
             <div class="container nav">
-                <a class="btn secondary" href="{{ site.baseurl }}/recipes/">← Back to Recipes</a>
+                <a class="btn secondary" href="{{ site.baseurl }}/recipes.html">← Back to Recipes</a>
                 <a class="btn" href="#" onclick="window.print(); return false;">Print Recipe 🖨️</a>
             </div>
         </header>
@@ -374,11 +381,8 @@
                 <div class="heroLeft">
                     <div>
                         <span class="pill">
-                            {% if page.tags %}
-                                {% for tag in page.tags limit:2 %}
-                                    {{ tag }}{% unless forloop.last %} • {% endunless %}
-                                {% endfor %}
-                            {% endif %}
+                            {% if page.tags %} {% for tag in page.tags limit:2 %} {{ tag }}{% unless forloop.last %} •
+                            {% endunless %} {% endfor %} {% endif %}
                         </span>
                         <h1 class="fredoka">{{ page.recipe_name }}</h1>
                         <p class="description">{{ page.full_description }}</p>
@@ -393,54 +397,53 @@
 
                     <div class="heroImagePlaceholder">
                         {% if page.image %}
-                            <img src="{{ page.image | relative_url }}" alt="{{ page.recipe_name }}" />
+                        <img src="{{ page.image | relative_url }}" alt="{{ page.recipe_name }}" />
                         {% else %}
-                            <!-- Default SVG placeholder if no image -->
-                            <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
-                                <defs>
-                                    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" style="stop-color: rgba(255, 228, 92, 0.3)" />
-                                        <stop offset="50%" style="stop-color: rgba(79, 182, 255, 0.25)" />
-                                        <stop offset="100%" style="stop-color: rgba(255, 79, 163, 0.2)" />
-                                    </linearGradient>
-                                    <linearGradient id="cupcake1" x1="0%" y1="0%" x2="0%" y2="100%">
-                                        <stop offset="0%" style="stop-color: #ffe45c" />
-                                        <stop offset="100%" style="stop-color: #ffb86b" />
-                                    </linearGradient>
-                                    <linearGradient id="cupcake2" x1="0%" y1="0%" x2="0%" y2="100%">
-                                        <stop offset="0%" style="stop-color: #4fb6ff" />
-                                        <stop offset="100%" style="stop-color: #2bd9a7" />
-                                    </linearGradient>
-                                    <linearGradient id="cupcake3" x1="0%" y1="0%" x2="0%" y2="100%">
-                                        <stop offset="0%" style="stop-color: #ff4fa3" />
-                                        <stop offset="100%" style="stop-color: #7a5cff" />
-                                    </linearGradient>
-                                </defs>
-                                <rect width="400" height="320" fill="url(#bg1)" />
-                                <circle cx="80" cy="60" r="40" fill="rgba(255, 79, 163, 0.15)" />
-                                <circle cx="320" cy="80" r="50" fill="rgba(79, 182, 255, 0.12)" />
-                                <circle cx="200" cy="280" r="35" fill="rgba(43, 217, 167, 0.13)" />
-                                <g transform="translate(80, 160)">
-                                    <path d="M-25,0 L-30,30 L30,30 L25,0 Z" fill="url(#cupcake1)" opacity="0.9" />
-                                    <ellipse cx="0" cy="-5" rx="28" ry="15" fill="rgba(255, 255, 255, 0.95)" />
-                                    <circle cx="-15" cy="-8" r="8" fill="#ff4fa3" opacity="0.6" />
-                                    <circle cx="12" cy="-10" r="6" fill="#4fb6ff" opacity="0.6" />
-                                </g>
-                                <g transform="translate(200, 140)">
-                                    <path d="M-30,0 L-36,40 L36,40 L30,0 Z" fill="url(#cupcake2)" opacity="0.9" />
-                                    <ellipse cx="0" cy="-8" rx="34" ry="18" fill="rgba(255, 255, 255, 0.95)" />
-                                    <circle cx="-18" cy="-12" r="9" fill="#ffe45c" opacity="0.6" />
-                                    <circle cx="15" cy="-14" r="7" fill="#ff4fa3" opacity="0.6" />
-                                    <circle cx="0" cy="-20" r="6" fill="#ff4fa3" opacity="0.8" />
-                                </g>
-                                <g transform="translate(320, 165)">
-                                    <path d="M-25,0 L-30,30 L30,30 L25,0 Z" fill="url(#cupcake3)" opacity="0.9" />
-                                    <ellipse cx="0" cy="-5" rx="28" ry="15" fill="rgba(255, 255, 255, 0.95)" />
-                                    <circle cx="-16" cy="-9" r="7" fill="#4fb6ff" opacity="0.6" />
-                                </g>
-                            </svg>
-                        {% endif %}
-                        {% if page.tags %}
+                        <!-- Default SVG placeholder if no image -->
+                        <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color: rgba(255, 228, 92, 0.3)" />
+                                    <stop offset="50%" style="stop-color: rgba(79, 182, 255, 0.25)" />
+                                    <stop offset="100%" style="stop-color: rgba(255, 79, 163, 0.2)" />
+                                </linearGradient>
+                                <linearGradient id="cupcake1" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color: #ffe45c" />
+                                    <stop offset="100%" style="stop-color: #ffb86b" />
+                                </linearGradient>
+                                <linearGradient id="cupcake2" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color: #4fb6ff" />
+                                    <stop offset="100%" style="stop-color: #2bd9a7" />
+                                </linearGradient>
+                                <linearGradient id="cupcake3" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color: #ff4fa3" />
+                                    <stop offset="100%" style="stop-color: #7a5cff" />
+                                </linearGradient>
+                            </defs>
+                            <rect width="400" height="320" fill="url(#bg1)" />
+                            <circle cx="80" cy="60" r="40" fill="rgba(255, 79, 163, 0.15)" />
+                            <circle cx="320" cy="80" r="50" fill="rgba(79, 182, 255, 0.12)" />
+                            <circle cx="200" cy="280" r="35" fill="rgba(43, 217, 167, 0.13)" />
+                            <g transform="translate(80, 160)">
+                                <path d="M-25,0 L-30,30 L30,30 L25,0 Z" fill="url(#cupcake1)" opacity="0.9" />
+                                <ellipse cx="0" cy="-5" rx="28" ry="15" fill="rgba(255, 255, 255, 0.95)" />
+                                <circle cx="-15" cy="-8" r="8" fill="#ff4fa3" opacity="0.6" />
+                                <circle cx="12" cy="-10" r="6" fill="#4fb6ff" opacity="0.6" />
+                            </g>
+                            <g transform="translate(200, 140)">
+                                <path d="M-30,0 L-36,40 L36,40 L30,0 Z" fill="url(#cupcake2)" opacity="0.9" />
+                                <ellipse cx="0" cy="-8" rx="34" ry="18" fill="rgba(255, 255, 255, 0.95)" />
+                                <circle cx="-18" cy="-12" r="9" fill="#ffe45c" opacity="0.6" />
+                                <circle cx="15" cy="-14" r="7" fill="#ff4fa3" opacity="0.6" />
+                                <circle cx="0" cy="-20" r="6" fill="#ff4fa3" opacity="0.8" />
+                            </g>
+                            <g transform="translate(320, 165)">
+                                <path d="M-25,0 L-30,30 L30,30 L25,0 Z" fill="url(#cupcake3)" opacity="0.9" />
+                                <ellipse cx="0" cy="-5" rx="28" ry="15" fill="rgba(255, 255, 255, 0.95)" />
+                                <circle cx="-16" cy="-9" r="7" fill="#4fb6ff" opacity="0.6" />
+                            </g>
+                        </svg>
+                        {% endif %} {% if page.tags %}
                         <span class="sticker">{{ page.tags[0] }} ✨</span>
                         {% endif %}
                     </div>
@@ -454,32 +457,27 @@
                             <strong>⏱️ Prep Time</strong>
                             <span>{{ page.prep_time }}</span>
                         </div>
-                        {% endif %}
-                        {% if page.bake_time %}
+                        {% endif %} {% if page.bake_time %}
                         <div class="infoItem">
                             <strong>🔥 Bake Time</strong>
                             <span>{{ page.bake_time }}</span>
                         </div>
-                        {% endif %}
-                        {% if page.cool_time %}
+                        {% endif %} {% if page.cool_time %}
                         <div class="infoItem">
                             <strong>❄️ Cool Time</strong>
                             <span>{{ page.cool_time }}</span>
                         </div>
-                        {% endif %}
-                        {% if page.temperature %}
+                        {% endif %} {% if page.temperature %}
                         <div class="infoItem">
                             <strong>🌡️ Temperature</strong>
                             <span>{{ page.temperature }}</span>
                         </div>
-                        {% endif %}
-                        {% if page.difficulty %}
+                        {% endif %} {% if page.difficulty %}
                         <div class="infoItem">
                             <strong>⭐ Difficulty</strong>
                             <span>{{ page.difficulty }}</span>
                         </div>
-                        {% endif %}
-                        {% if page.best_for %}
+                        {% endif %} {% if page.best_for %}
                         <div class="infoItem">
                             <strong>🎂 Best For</strong>
                             <span>{{ page.best_for }}</span>
@@ -499,29 +497,21 @@
                     {% endfor %}
                 </ul>
             </div>
-            {% endif %}
-
-            {% if page.instructions %}
+            {% endif %} {% if page.instructions %}
             <div class="card">
                 <h2 class="fredoka">👩‍🍳 Instructions</h2>
                 <p class="description">Follow these simple steps for perfect results every time!</p>
                 <ol class="stepsList">
                     {% for instruction in page.instructions %}
-                    <li>
-                        <strong>{{ instruction.title }}:</strong> {{ instruction.description }}
-                    </li>
+                    <li><strong>{{ instruction.title }}:</strong> {{ instruction.description }}</li>
                     {% endfor %}
                 </ol>
             </div>
-            {% endif %}
-
-            {% if page.tips_and_notes %}
+            {% endif %} {% if page.tips_and_notes %}
             <div class="notesCard">
                 <h3 class="fredoka">💡 Baker's Tips & Notes</h3>
                 {% for tip in page.tips_and_notes %}
-                <p>
-                    <strong>{{ tip.title }}:</strong> {{ tip.description }}
-                </p>
+                <p><strong>{{ tip.title }}:</strong> {{ tip.description }}</p>
                 {% endfor %}
             </div>
             {% endif %}
