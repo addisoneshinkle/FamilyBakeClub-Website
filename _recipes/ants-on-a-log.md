@@ -20,7 +20,7 @@ ingredients:
     - 5-6 Full Length Celery Sticks
     - 1/2 Cup Peanut Butter
     - 1/4 Cup Raisins
-   instructions:
+instructions:
     - title: Prep
       description:
           Get your Celery, Peanut Butter and Raisins out and measured. Cut the white and leafy part of your Celery and cut it in half.
