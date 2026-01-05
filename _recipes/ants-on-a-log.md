@@ -7,7 +7,7 @@ tags:
     - Snack
     - Kid-friendly
     - Quick
-image: /assets/images/recipes/addi-test-recipe.jpg
+image: /assets/images/recipes/ants-on-a-log.jpg
 prep_time: 10 minutes
 bake_time: 0 minutes
 cool_time: 0 minutes
