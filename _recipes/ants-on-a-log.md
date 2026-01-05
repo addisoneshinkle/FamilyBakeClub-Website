@@ -28,11 +28,11 @@ instructions:
       description:
           Get a plate and take 6 sticks of Celery. Then get a spoon and take some Peanut Butter and spread it inside the Celery. Once you are done do that with the other 6 sticks. Then add the Raisins
 tips_and_notes:
-    - title: Have Fun!
-      description: Have fun while baking.
-    - title: Friends!
+    - title: Making More
+      description: These are easy to make more so you can make these for play dates and partys they are easy to make, healthy and yummy!
+    - title: So Easy
       description:
-          Baking is better with FRIENDS!
+          Easy to make.
     - title: Kid Jobs
       description: Kids can make with parent suport.
 ---
