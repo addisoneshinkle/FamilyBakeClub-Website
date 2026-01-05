@@ -8,31 +8,30 @@ tags:
     - Kid-friendly
     - Quick
 image: /assets/images/recipes/berry-parfait.jpg
-prep_time: 10 minutes
+prep_time: 15 minutes
 bake_time: 0 minutes
 cool_time: 0 minutes
-total_time: 10 minutes
-quantity: 10/12 sticks
+total_time: 15 minutes
+quantity: 1 parfait
 temperature: N/A
 difficulty: Easy
 best_for: Snacks
 ingredients:
-    - 5-6 Full Length Celery Sticks
-    - 1/2 Cup Peanut Butter
-    - 1/4 Cup Raisins
+    - 1 Cup Yogurt
+    - 1/2 Cup Fruit
+    - 1/2 Cup Granola
 instructions:
     - title: Prep
       description:
-          Get your Celery, Peanut Butter and Raisins out and measured. Cut the white and leafy part of your Celery and cut it in half.
-    - title: Make The Logs
+          Get you friut, yogurt and granola out and get a dish you can make it in.
+       -title: Make The Parfait
       description:
-          Get a plate and take 6 sticks of Celery. Then get a spoon and take some Peanut Butter and spread it inside the Celery. Once you are done do that with the other 6 sticks. Then add the Raisins
+          First you want to get you dish/cup and put half of your granola on the bottom of it. Then you want to put half of your yogurt on top of the granola. After that you want to put half of the berrys on top of the yogurt. then you do those same steps for the next half.
 tips_and_notes:
     - title: Making More
-      description: These are easy to make more so you can make these for play dates and partys they are easy to make, healthy and yummy!
+      description: These are easy to make more of so you can make these for play dates and partys they are healthy and yummy!
     - title: So Easy
-      description:
-          Easy to make.
+      description:Easy to make.
     - title: Kid Jobs
       description: Kids can make with parent suport.
 ---
