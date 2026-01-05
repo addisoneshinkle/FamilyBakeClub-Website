@@ -28,11 +28,11 @@ instructions:
       description:
           Get a plate and take 6 sticks of Celery. Then get a spoon and take some Peanut Butter and spread it inside the Celery. Once you are done do that with the other 6 sticks. Then add the Raisins
 tips_and_notes:
-    - title: Take your time!
-      description: This recipe takes time, so make sure to take it
-    - title: Don't Overmix
+    - title: Have Fun!
+      description: Have fun while baking.
+    - title: Friends!
       description:
-          Mix the batter until just combined. Overmixing can make your cupcakes dense instead of light and fluffy.
+          Baking is better with FRIENDS!
     - title: Kid Jobs
-      description: Kids can watch
+      description: Kids can make with parent suport.
 ---
