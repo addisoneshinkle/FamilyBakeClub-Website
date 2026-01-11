@@ -1,42 +1,50 @@
 ---
-recipe_name: Berry Parfait
-short_description: Yummy healthy snack for kids
-full_description: Yummy healthy snack for kids
+recipe_name: Mini Pizzas
+short_description: Yummy healthy meal for kids
+full_description: Yummy healthy meal for kids
 
 tags:
-  - Easy
-  - Snack
-  - Kid-friendly
-  - Quick
+    - Medium
+    - Meal
+    - Party Snack
+    - Kid-friendly
 
-image: /assets/images/recipes/berry-parfait.jpg
-prep_time: 15 minutes
-bake_time: 0 minutes
-cool_time: 0 minutes
-total_time: 15 minutes
-quantity: 1 parfait
-temperature: N/A
-difficulty: Easy
-best_for: Snacks
+image: /assets/images/recipes/mini-pizzas.jpg
+prep_time: 3 minutes
+bake_time: 12 minutes
+cool_time: 10 minutes
+total_time: 25 minutes
+quantity: 6 Pizzas
+temperature: 350°F (177°C)
+difficulty: Medium
+best_for: Meals
 
 ingredients:
-  - 1 Cup Yogurt
-  - 1/2 Cup Fruit
-  - 1/2 Cup Granola
+    - 6 Mini Pitas
+    - Pizza Sauce
+    - Cheese
+    - Other Toppings (Pineapple, Ham, Chicken, Olives, and Pepperoni)
 
 instructions:
-  - title: Prep
-    description: Get your fruit, yogurt, and granola out and get a dish you can make it in.
-  - title: Make The Parfait
-    description: >
-      First put half the granola in the dish. Then add half the yogurt,
-      then half the berries. Repeat for the second layer.
-
+    - title: Prep
+      description:
+          Get your mini pitas out and your sauce. Wait to get the cheese out so it doesn't go bad. Preheat oven to
+          350°F.
+    - title: Base Layer
+      description: First, take your mini pitas and put them on a plate. Put sauce on the pitas.
+    - title: Add Toppings
+      description:
+          Then, you want to add your desired topping. I recommend cheese first, then toppings, and finish it with some
+          more cheese.
+    - title: Bake
+      description: Put the pitas on a pan, put it in the oven for ~12 minutes until cheese is melted.
+    - title: Eat
+      description: Once it is cool, eat and enjoy.
 tips_and_notes:
-  - title: Making More
-    description: These are easy to make more of for play dates and parties.
-  - title: So Easy
-    description: Easy to make.
-  - title: Kid Jobs
-    description: Kids can make this with parent support.
+    - title: Toppings
+      description: Go easy or you won't taste the sauce.
+    - title: Cheese
+      description: Wait until the cheese is melted or the pizza will be cold.
+    - title: Hot Stuff
+      description: If you don't want your kids to use the oven, take over at this step.
 ---
